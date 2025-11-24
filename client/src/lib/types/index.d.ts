@@ -1,0 +1,97 @@
+type PagedList<T, TCrusor> = {
+    items: T[],
+    nextCursor: TCrusor
+}
+
+type  Activity = {
+    id:              string;
+    title:           string;
+    date:            Date;
+    description:     string;
+    category:        string;
+    isCancelled:     boolean;
+    city:            string;
+    venue:           string;
+    latitude:        number;
+    longitude:       number;
+    attendees:       Profile[];
+    isGoing:         boolean;
+    isHost:          boolean;
+    hostId:          string;
+    hostDisplayName: string;
+    hostImageUrl:   string | undefined;
+}
+
+type Profile = {
+    id:          string;
+    displayName: string;
+    bio?:        string;
+    imageUrl?:   string;
+    followersCount?: number;
+    followingCount?: number;
+    following?: boolean;
+}
+
+type ProfileActivities = {
+    id: string;
+    title:string;
+    category:string;
+    date:string;
+}
+
+type EditProfile = {
+    displayName: string;
+    bio?:        string;
+}
+
+type Photo = {
+    id:        string;
+    url:       string;
+}
+
+type User = {
+    id:          string;
+    email:       string;
+    displayName: string;
+    imgUrl?:   string;
+}
+
+type ChatComment = {
+    id: string
+    createdAt: Date
+    body: string
+    userId: string
+    displayName: string
+    imageUrl?: string
+}
+
+type LocationIQSuggestion = {
+    place_id:        string;
+    osm_id:          string;
+    osm_type:        string;
+    licence:         string;
+    lat:             string;
+    lon:             string;
+    boundingbox:     string[];
+    class:           string;
+    type:            string;
+    display_name:    string;
+    display_place:   string;
+    display_address: string;
+    address:         LocationIQAddress;
+}
+
+type LocationIQAddress = {
+    name:           string;
+    state?:         string;
+    country:        string;
+    country_code:   string;
+    house_number?:  string;
+    road?:          string;
+    neighbourhood?: string;
+    suburb?:        string;
+    town?:          string;
+    village?:       string;
+    city?:          string;
+    postcode?:      string;
+}

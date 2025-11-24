@@ -1,0 +1,17 @@
+import {z} from 'zod';
+import { requiredString } from '../util/util';
+
+export const activitySchema = z.object({
+    title: requiredString('Title'),
+    description: requiredString('Description'),
+    category: requiredString('Category'),
+    date: z.date().transform((str: string | number | Date) => new Date(str)),
+    location: z.object({
+        venue: requiredString('Venue'),
+        city: z.string().optional(),
+        latitude: z.coerce.number<number>(),
+        longitude: z.coerce.number<number>(),
+    })
+});
+
+export type ActivitySchema = z.input<typeof activitySchema>;
